@@ -105,6 +105,7 @@
     <Compile Include="Category.cs">
       <DependentUpon>AccountModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="LifeTrackDataAccess.cs" />
     <Compile Include="MDIParent.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -474,6 +474,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MDIParent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MDIParent";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

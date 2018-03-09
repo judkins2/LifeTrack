@@ -19,19 +19,49 @@ namespace LifeTrack
 
         private void butSubmit_Click(object sender, EventArgs e)
         {
+            int id;
             using (HomeTrackEntities context = new HomeTrackEntities())
             {
-                Account account = new Account();
-                List<Account> accountList = new List<Account>();
-
-                accountList = context.Accounts.ToList();
-                var jeff = (from d in context.Accounts
-                                         select d).ToList();
-                cmbAccount.DataSource = jeff.ToList();
-                cmbAccount.DisplayMember = "NickName";
-
+                Category cat = (new Category { Name = cmbCategory.Text });
+                 context.Categories.Add(cat);
+               
+                context.SaveChanges();
+                id = cat.Id;
             }
-                
+
+            MessageBox.Show(cmbAccount.Text + " " + cmbAccount.SelectedValue + " " + cmbCategory.Text + " " + cmbCategory.SelectedValue);
+            string amount = txtAmount.Text;
+            string payee = txtPayee.Text;
+            int categoryId = id;
+            bool reconciled = chkReconciled.Checked;
+            string date = monthCalendar1.SelectionRange.Start.ToShortDateString();
+            string checkNumber = txtCheckNumber.Text;
+            string memo = txtMemo.Text;
+
+
+            MessageBox.Show(amount + " " + payee + " " + categoryId + " " + reconciled + " " + date + " " + checkNumber + " " + memo);
+
+
+
+
+        }
+
+        private void Transactions_Load(object sender, EventArgs e)
+        {
+            LifeTrackDataAccess ltda = new LifeTrackDataAccess();
+
+            cmbAccount.DataSource = ltda.GetAccounts();
+            cmbAccount.DisplayMember = "NickName";
+            cmbAccount.ValueMember = "Id";
+
+            cmbCategory.DataSource = ltda.GetCategories();
+            cmbCategory.DisplayMember = "Name";
+            cmbCategory.ValueMember = "Id";
+        }
+
+        private void butCancel_Click(object sender, EventArgs e)
+        {
+            this.Close(); 
         }
     }
 }

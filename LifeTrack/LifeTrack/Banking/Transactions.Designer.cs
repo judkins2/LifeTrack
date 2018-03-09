@@ -122,6 +122,7 @@
             // 
             // cmbAccount
             // 
+            this.cmbAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccount.FormattingEnabled = true;
             this.cmbAccount.Location = new System.Drawing.Point(157, 48);
             this.cmbAccount.Name = "cmbAccount";
@@ -169,6 +170,7 @@
             // monthCalendar1
             // 
             this.monthCalendar1.Location = new System.Drawing.Point(157, 217);
+            this.monthCalendar1.MaxSelectionCount = 1;
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 14;
             // 
@@ -198,6 +200,7 @@
             this.butCancel.TabIndex = 17;
             this.butCancel.Text = "Cancel";
             this.butCancel.UseVisualStyleBackColor = true;
+            this.butCancel.Click += new System.EventHandler(this.butCancel_Click);
             // 
             // Transactions
             // 
@@ -223,7 +226,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Transactions";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transactions";
+            this.Load += new System.EventHandler(this.Transactions_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
